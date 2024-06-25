@@ -43,10 +43,10 @@ export default class EZActor extends Actor {
             const showKarmaChange = game.settings.get(game.system.id, "showKarmaChangeInChat");
 
             if (showKarmaChange !== "never") {
+                const newKarma = changed.system.karma;
+                const chg = newKarma - oldKarma;
+                const speaker = ChatMessage.getSpeaker({actor: this});
                 if (chg != 0){
-                    const newKarma = changed.system.karma;
-                    const chg = newKarma - oldKarma;
-                    const speaker = ChatMessage.getSpeaker({actor: this});
                 
                     const msg = this.name + " " + 
                         (chg > 0 ? game.i18n.localize("EZD6.added") : game.i18n.localize("EZD6.spent"))
